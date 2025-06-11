@@ -1,0 +1,58 @@
+paths:
+  aliases:
+    blackbox_agent: fungus/blackbox_agent.py
+    blackbox_config: fungus/blackbox_config.py
+    blackbox_infect: fungus/blackbox_infect.py
+    blackbox_injector: fungus/blackbox_injector.py
+    blackbox_retention: fungus/blackbox_retention.py
+    blackbox_tag_engine: fungus/blackbox_tag_engine.py
+    blackbox_tag_trainer: fungus/blackbox_tag_trainer.py
+    blackbox_writer: fungus/blackbox_writer.py
+
+imports:
+  blackbox_agent: fungus.blackbox_agent.BlackboxAgent
+  record_event: fungus.blackbox_agent.record_event
+  get_ctx: fungus.blackbox_agent.get_ctx
+  blackbox_settings: fungus.blackbox_config.BLACKBOX_SETTINGS
+  tag_for_context: fungus.blackbox_tag_engine.tag_for_context
+  write_blackbox_log: fungus.blackbox_writer.write_blackbox_log
+  BLACKBOX_PATH: fungus.blackbox_config.BLACKBOX_PATH
+  blackbox_ctx_injector: fungus.blackbox_agent.set_ctx
+  set_ctx: fungus.blackbox_agent.set_ctx
+  run_retention_check: fungus.blackbox_retention.run_retention_check
+  current_utc_day_logfile: fungus.blackbox_config.current_utc_day_logfile
+  blackbox_wrap: fungus.blackbox_infect.blackbox_wrap
+  auto_inject: fungus.blackbox_injector.auto_inject
+  wrap_module_functions: fungus.blackbox_injector.wrap_module_functions
+  archive_layer1: fungus.blackbox_retention.archive_layer1
+  _generate_signature: fungus.blackbox_tag_engine._generate_signature
+  LOG_PATHS: fungus.blackbox_config.LOG_PATHS
+  train_tags: fungus.blackbox_tag_trainer.train_tags
+
+modules:
+  current_utc_day_logfile: fungus.blackbox_config.current_utc_day_logfile
+  blackbox_wrap: fungus.blackbox_infect.blackbox_wrap
+  auto_inject: fungus.blackbox_injector.auto_inject
+  wrap_module_functions: fungus.blackbox_injector.wrap_module_functions
+  archive_layer1: fungus.blackbox_retention.archive_layer1
+  tag_for_context: fungus.blackbox_tag_engine.tag_for_context
+  _generate_signature: fungus.blackbox_tag_engine._generate_signature
+  LOG_PATHS: fungus.blackbox_config.LOG_PATHS
+  train_tags: fungus.blackbox_tag_trainer.train_tags
+  write_blackbox_log: fungus.blackbox_writer.write_blackbox_log
+  blackbox_agent: fungus.blackbox_agent.BlackboxAgent
+  record_event: fungus.blackbox_agent.record_event
+  get_ctx: fungus.blackbox_agent.get_ctx
+  blackbox_settings: fungus.blackbox_config.BLACKBOX_SETTINGS
+  BLACKBOX_PATH: fungus.blackbox_config.BLACKBOX_PATH
+  blackbox_ctx_injector: fungus.blackbox_agent.set_ctx
+  set_ctx: fungus.blackbox_agent.set_ctx
+  run_retention_check: fungus.blackbox_retention.run_retention_check
+
+background_tasks:
+  on_startup:
+    non-thread:
+    - auto_inject
+    threading: []
+  on_shutdown: []
+  on_pause: []
